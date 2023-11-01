@@ -27,7 +27,6 @@ pipeline {
             steps {
                 dir('DevOps_Project_Front') {
                     script {
-                        
                         sh 'npm install' 
                         sh 'ng build'      
                     }
