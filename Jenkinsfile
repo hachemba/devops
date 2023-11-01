@@ -29,7 +29,7 @@ pipeline {
                     script {
                         
                         sh 'npm install' 
-                        sh 'ng build '      
+                        sh 'ng build'      
                     }
                 }
             }
