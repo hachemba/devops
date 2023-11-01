@@ -1,15 +1,19 @@
 pipeline {
     agent any
+
+    tools{
+        nodejs 'nodeJsPackage'
+    }
     
     stages {
-        stage('Github Preperation') {
+        stage('GITHUB') {
             steps {
                 echo "Getting Project from Git"
                 checkout scm
             }
         }
 
-        stage('Run Unit Tests ') {
+        stage('BUILD + TEST BACKEND') {
             steps {
                 dir('DevOps_Project') {
                     script {
@@ -19,6 +23,17 @@ pipeline {
             }            
         }
         
+        stage('BUILD FRONTEND') {
+            steps {
+                dir('DevOps_Project_Front') {
+                    script {
+                        
+                        sh 'npm install' 
+                        sh 'ng build '      
+                    }
+                }
+            }
+        }
         
 
        
