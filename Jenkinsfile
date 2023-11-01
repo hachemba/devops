@@ -8,11 +8,11 @@ pipeline {
                 checkout scm
             }
 
-            stage('Run Unit Tests ') {
+         stage('Run Unit Tests ') {
             steps {
                 dir('DevOps_Project') {
                     script {
-                        sh 'mvn clean install' 
+                        sh 'mvn clean install'
                     }
                 }
             }
