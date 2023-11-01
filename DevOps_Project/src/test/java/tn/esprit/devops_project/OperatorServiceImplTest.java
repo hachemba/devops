@@ -35,9 +35,9 @@ public class OperatorServiceImplTest {
     public void retrieveAllOperateursTest() {
         when(operateurRepository.findAll()).thenReturn(
                 Arrays.asList(
-                        new Operator(1L, "fathi", "hadewi", "fathi123", null),
-                        new Operator(2L, "hamza", "lahmer", "hamza123", null),
-                        new Operator(3L, "faysel", "mhamed", "faysel123", null)
+                        new Operator(1L, "wissal", "flija", "wisal123", null),
+                        new Operator(2L, "emna", "benarab", "emna123", null),
+                        new Operator(3L, "raed", "chebbi", "raed123", null)
                 )
         );
 
