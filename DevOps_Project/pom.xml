@@ -14,15 +14,6 @@
     <name>DevOps_Project</name>
     <description>DevOps_Project</description>
 
-    <distributionManagement>
-        <repository>
-            <id>deploymentRepo</id>
-            <name>Nexus Repository</name>
-            <url>http://192.168.33.10:8081/repository/maven-releases/</url>
-        </repository>
-    </distributionManagement>
-
-
     <properties>
         <java.version>8</java.version>
     </properties>
