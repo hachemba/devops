@@ -35,8 +35,8 @@ public class OperatorServiceImplTest {
     public void retrieveAllOperateursTest() {
         when(operateurRepository.findAll()).thenReturn(
                 Arrays.asList(
-                        new Operator(1L, "wissal", "flija", "wisal123", null),
-                        new Operator(2L, "emna", "benarab", "emna123", null),
+                        new Operator(1L, "youssef", "flija", "youssef123", null),
+                        new Operator(2L, "hachem", "benarab", "hachem123    ", null),
                         new Operator(3L, "raed", "chebbi", "raed123", null)
                 )
         );
@@ -47,14 +47,14 @@ public class OperatorServiceImplTest {
 
     @Test
     public void addOperateurTest() {
-        Operator op = new Operator(1L,"fathi","hadewi","fathi123", null);
+        Operator op = new Operator(1L,"youssef","flija","youssef123", null);
         when(operateurRepository.save(op)).thenReturn(op);
         assertEquals(op, operateurService.addOperator(op));
     }
 
     @Test
     public void retreiveOperateurTest() {
-        Operator op = new Operator(2L,"hamza","lahmer","hamza123", null);
+        Operator op = new Operator(2L,"hachem","benarab","hachem123", null);
         when(operateurRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(op));
         Operator op1 = operateurService.retrieveOperator(2L);
         Assertions.assertNotNull(op1);
@@ -71,7 +71,6 @@ public class OperatorServiceImplTest {
 
     @Test
     public void deleteOperateurTest() {
-        // Operator op = new Operator(1L,"fathi","hadewi","fathi123", null);
         operateurService.deleteOperator(1L);
         verify(operateurRepository).deleteById(1L);
 
@@ -79,7 +78,7 @@ public class OperatorServiceImplTest {
 
     @Test
     public void updatetOperateurTest() {
-        Operator op = new Operator(1L,"fathi","hadewi","fathi123", null) ;
+        Operator op = new Operator(1L,"youssef","flija","youssef123", null) ;
         Mockito.when(operateurRepository.save(Mockito.any(Operator.class))).thenReturn(op);
         op.setFname("mohamed");;
         Operator exisitingOp= operateurService.updateOperator(op) ;

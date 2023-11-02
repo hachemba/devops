@@ -23,16 +23,16 @@ pipeline {
             }            
         }
         
-        stage('BUILD FRONTEND') {
-            steps {
-                dir('DevOps_Project_Front') {
-                    script {
-                        sh 'npm install' 
-                        sh 'ng build'      
-                    }
-                }
-            }
-        }
+        // stage('BUILD FRONTEND') {
+        //     steps {
+        //         dir('DevOps_Project_Front') {
+        //             script {
+        //                 sh 'npm install' 
+        //                 sh 'ng build'      
+        //             }
+        //         }
+        //     }
+        // }
         
 
        
