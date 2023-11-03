@@ -22,6 +22,14 @@ pipeline {
                 }
             }            
         }
+
+        stage('test location') {
+    steps {
+        pwd()
+    }
+}
+        
+
         
         
 
