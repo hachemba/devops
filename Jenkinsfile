@@ -17,7 +17,7 @@ pipeline {
             steps {
                 dir('DevOps_Project') {
                     script {
-                        sh 'mvn clean install'
+                        sh 'mvn clean test'
                     }
                 }
             }            
