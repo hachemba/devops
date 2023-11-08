@@ -22,6 +22,17 @@ pipeline {
                 }
             }            
         }
+          stage('Build Frontend') {
+            steps {
+                dir('DevOps_Project_Front') {
+                    script {
+                        export PATH="/path/to/node_modules/.bin:$PATH"
+                        sh 'npm install'
+                        sh 'ng build '
+                    }
+                }
+            }
+        }
 
  
 
