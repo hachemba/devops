@@ -39,6 +39,7 @@ pipeline {
                     }
                 }
             }
+        }
          /* stage('Build Frontend') {
             steps {
                 dir('DevOps_Project_Front') {
