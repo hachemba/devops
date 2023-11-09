@@ -24,7 +24,7 @@ pipeline {
         }
           stage('SonarQube Integration') {
             steps {
-                dir('tpAchatProject') {
+                dir('DevOps_Project') {
                     withSonarQubeEnv('sonarqubeVar') {
                         sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar -Dsonar.host.url=http://192.168.33.10:9000 -Dsonar.login=admin -Dsonar.password=sonar'
                     }
