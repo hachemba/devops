@@ -31,6 +31,14 @@ pipeline {
                 }
             }
         }
+        stage('Deployments') {
+            steps {
+                dir('DevOps_Project') {
+                    script {
+                 sh 'mvn deploy'
+                    }
+                }
+            }
          /* stage('Build Frontend') {
             steps {
                 dir('DevOps_Project_Front') {
