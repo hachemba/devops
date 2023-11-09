@@ -22,18 +22,27 @@ pipeline {
                 }
             }            
         }
-          stage('Build Frontend') {
+          stage('SonarQube Integration') {
+            steps {
+                dir('tpAchatProject') {
+                    withSonarQubeEnv('sonarqubeVar') {
+                        sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar -Dsonar.host.url=http://192.168.33.10:9000 -Dsonar.login=admin -Dsonar.password=sonar'
+                    }
+                }
+            }
+        }
+         /* stage('Build Frontend') {
             steps {
                 dir('DevOps_Project_Front') {
                     script {
-                        export PATH="/path/to/node_modules/.bin:$PATH"
+//                        export PATH="/path/to/node_modules/.bin:$PATH"
                         sh 'npm install'
                         sh 'ng build '
                     }
                 }
             }
         }
-
+*/
  
 
         
