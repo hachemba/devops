@@ -69,6 +69,16 @@ pipeline {
                 }
             }
         }
+        stage('docker compose') {
+            steps {
+                dir('DevOps_Project') {
+                    script {
+                        sh 'docker-compose - docker-compose.yml up -d'
+                    }
+                }
+            }
+        }
+    
         //    stage('Compose grafana and prometheus') {
         //     steps {
         //         dir('DevOps_Project') {
