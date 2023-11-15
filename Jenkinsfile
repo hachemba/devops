@@ -4,6 +4,11 @@ pipeline {
     tools{
         nodejs 'nodeJsPackage'
     }
+
+    environment {
+     //   PATH = "$PATH:/usr/local/bin"
+       DOCKERHUB_CREDENTIALS = credentials('hbaDockHub')
+    }
     
     stages {
         stage('GITHUB') {
@@ -12,6 +17,8 @@ pipeline {
                 checkout scm
             }
         }
+
+
 
         stage('BUILD + TEST BACKEND') {
             steps {
@@ -40,6 +47,12 @@ pipeline {
                 }
             }
         }
+           stage('Login Docker') {
+            steps {
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+            }
+        }
+
          /* stage('Build Frontend') {
             steps {
                 dir('DevOps_Project_Front') {
