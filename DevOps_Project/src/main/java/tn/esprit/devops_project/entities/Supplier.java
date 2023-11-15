@@ -30,7 +30,12 @@ public class Supplier implements Serializable {
 	Set<Invoice> invoices;
 	@ManyToMany
 	private Set<ActivitySector> activitySectors;
-    
 
-	
+
+    public Supplier(long l, String code1, String label1, SupplierCategory conventionne) {
+		idSupplier = l;
+		code = code1;
+		label=label1;
+		supplierCategory=conventionne;
+    }
 }

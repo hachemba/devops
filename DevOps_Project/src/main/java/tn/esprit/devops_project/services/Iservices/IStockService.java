@@ -10,8 +10,4 @@ public interface IStockService {
     Stock retrieveStock(Long id);
     List<Stock> retrieveAllStock();
 
-    Stock updateStock(Stock stock);
-    void deleteStock(Long id);
-    List<Stock> findStocksByTitle(String title);
-
 }

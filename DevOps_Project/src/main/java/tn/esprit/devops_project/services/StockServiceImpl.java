@@ -30,24 +30,5 @@ public class StockServiceImpl implements IStockService {
     }
 
 
-    @Override
-    public Stock updateStock(Stock stock) {
-        // Implement the logic to update a Stock entity
-        // This might involve updating properties of the stock and saving it to the database
-        return stockRepository.save(stock);
-    }
-
-    @Override
-    public void deleteStock(Long id) {
-        stockRepository.deleteById(id);
-    }
-
-    @Override
-    public List<Stock> findStocksByTitle(String title) {
-        return stockRepository.findByTitle(title);
-    }
-
-
-
 
 }

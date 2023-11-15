@@ -24,7 +24,6 @@ import tn.esprit.devops_project.services.OperatorServiceImpl;
 @ExtendWith(MockitoExtension.class)
 public class OperatorServiceImplTest {
 
-
     @Mock
     OperatorRepository operateurRepository;
 
@@ -86,5 +85,6 @@ public class OperatorServiceImplTest {
         assertNotNull(exisitingOp);
         assertEquals("mohamed", op.getFname());
     }
+
 
 }
