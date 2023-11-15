@@ -8,7 +8,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: devops
     volumes:
-      - ./my-datavolume:/var/lib/mysql
+      - ./my-datavolumeee:/var/lib/mysql
 
   backend:
     image: hachembenarab/devops
