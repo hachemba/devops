@@ -37,4 +37,8 @@ services:
       }'
 
 volumes:
-  db:
+  mysql_data:
+  mysql_config:
+networks:
+  app-network:
+    driver: bridge
