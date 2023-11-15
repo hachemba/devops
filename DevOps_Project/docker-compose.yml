@@ -1,40 +1,30 @@
-version: "3.8"
+version: '3.3'
 services:
-  # MySQL database service
-  mysqldb:
-    container_name: mysqldb
+  mysql:
     image: mysql:5.7
-    restart: unless-stopped
+    container_name: mysql
     ports:
-      - 3307:3306
+      - "3306:3306"
     environment:
-      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      MYSQL_ROOT_PASSWORD:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_DATABASE: devops
     volumes:
-      - db:/var/lib/mysql
+      - mysql_data:/var/lib/mysql
+      - mysql_config:/etc/mysql/conf.d
+    networks:
+      - app-network
 
-  # Spring Boot application service
-  devops_project:
-    container_name: devops_project
-    depends_on:
-      - mysqldb
+  spring-app:
     image: hachembenarab/alpine
-    restart: on-failure
     ports:
-      - 8087:8087
-    stdin_open: true
-    tty: true
+      - "8082:8082"
+    depends_on:
+      - mysql
+    networks:
+      - app-network
     environment:
-      MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE: 'prometheus'
-      MANAGEMENT_ENDPOINT_PROMETHEUS_ENABLED: 'true'
-      MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED: 'true'
-      MANAGEMENT_ENDPOINT_HEALTH_SHOW_DETAILS: 'always'
-      SPRING_APPLICATION_JSON: '{
-        "spring.datasource.url": "jdbc:mysql://mysqldb:3306/devops?createDatabaseIfNotExist=true",
-        "spring.datasource.username": "root",
-        "spring.datasource.password": null,
-        "spring.jpa.properties.hibernate.dialect": "org.hibernate.dialect.MySQL5InnoDBDialect",
-        "spring.jpa.hibernate.ddl-auto": "update"
-      }'
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/devops
 
 volumes:
   mysql_data:
