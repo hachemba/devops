@@ -50,14 +50,14 @@ pipeline {
                post {
                 success {
                     script {
-                        def subject = "Deployment"
-                        def body = "Nexus is good"
-                        def to = 'hachembenarab@gmail.com'
+                       // def subject = "Deployment"
+                        //def body = "Nexus is good"
+                        //def to = 'hachembenarab@gmail.com'
 
                         mail(
-                            subject: subject,
-                            body: body,
-                            to: to,
+                            subject: "Deployment",
+                            body: "Nexus is good",
+                            to: "hachembenarab@gmail.com",
                         )
                     }
                 }
