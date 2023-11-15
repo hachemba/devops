@@ -58,7 +58,7 @@ pipeline {
                     def dockerImage = 'hachembenarab/alpine:1.0.0'
                     def imageExists = sh(script: "docker inspect --type=image $dockerImage", returnStatus: true) == 0
 
-                    if (!imageExists) {
+                    if (imageExists) {
                         dir('DevOps_Project') {
                             sh "docker build -t $dockerImage ."
                             sh "docker push $dockerImage"
