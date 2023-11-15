@@ -27,7 +27,8 @@ pipeline {
                         sh 'mvn clean test'
                     }
                 }
-            }            
+            }
+                        
         }
           stage('SonarQube Integration') {
             steps {
@@ -44,6 +45,37 @@ pipeline {
                     script {
                  sh 'mvn deploy'
                     }
+                }
+            }
+               post {
+                success {
+                    script {
+                        def subject = "Deployment"
+                        def body = "Nexus is good"
+                        def to = 'hachembenarab@gmail.com'
+
+                        mail(
+                            subject: subject,
+                            body: body,
+                            to: to,
+                        )
+                    }
+                }
+                failure {
+                    script {
+                        def subject = "Build Failure - ${currentBuild.fullDisplayName}"
+                        def body = "The build has failed in the Jenkins pipeline. Please investigate and take appropriate action."
+                        def to = 'hachembenarab@gmail.com'
+
+                        mail(
+                            subject: subject,
+                            body: body,
+                            to: to,
+                        )
+                    }
+                }
+                always {
+                    junit '**/target/surefire-reports/TEST-*.xml'
                 }
             }
         }
@@ -75,6 +107,9 @@ pipeline {
                 }
             }
         }
+
+
+          
     
         //    stage('Compose grafana and prometheus') {
         //     steps {
