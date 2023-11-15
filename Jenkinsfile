@@ -50,12 +50,10 @@ pipeline {
                post {
                 success {
                     script {
-                       // def subject = "Deployment"
-                        //def body = "Nexus is good"
-                        //def to = 'hachembenarab@gmail.com'
+                      
 
                         mail(
-                            subject: "Deployment",
+                            subject: "Build Success - ${currentBuild.fullDisplayName}",
                             body: "Nexus is good",
                             to: "hachembenarab@gmail.com",
                         )
@@ -63,20 +61,16 @@ pipeline {
                 }
                 failure {
                     script {
-                        def subject = "Build Failure - ${currentBuild.fullDisplayName}"
-                        def body = "The build has failed in the Jenkins pipeline. Please investigate and take appropriate action."
-                        def to = 'hachembenarab@gmail.com'
+                
 
                         mail(
-                            subject: subject,
-                            body: body,
-                            to: to,
+                            subject: "Build Failure - ${currentBuild.fullDisplayName}",
+                            body: "The build has failed in the Jenkins pipeline. Please investigate and take appropriate action.",
+                            to: "hachembenarab@gmail.com",
                         )
                     }
                 }
-                always {
-                    junit '**/target/surefire-reports/TEST-*.xml'
-                }
+                
             }
         }
            stage('Login Docker') {
