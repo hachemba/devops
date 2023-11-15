@@ -16,7 +16,7 @@ services:
       - app-network
 
   spring-app:
-    image: hachembenarab/alpine
+    image: hachembenarab/alpine:1.0.0
     ports:
       - "8082:8082"
     depends_on:
