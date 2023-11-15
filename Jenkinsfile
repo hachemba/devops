@@ -11,7 +11,7 @@ pipeline {
     }
     
     stages {
-        stage('GITHUB') {
+        stage('Github Connection') {
             steps {
                 echo "Getting Project from Git"
                 checkout scm
@@ -20,7 +20,7 @@ pipeline {
 
 
 
-        stage('BUILD + TEST BACKEND') {
+        stage('Test Backend') {
             steps {
                 dir('DevOps_Project') {
                     script {
@@ -78,7 +78,7 @@ pipeline {
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
             }
         }
-          stage('Build & Push Docker Image (Backend)') {
+          stage(' Push Docker Image to DockerHub') {
             steps {
                 script {
                     def dockerImage = 'hachembenarab/alpine:1.0.0'
@@ -105,31 +105,6 @@ pipeline {
 
           
     
-        //    stage('Compose grafana and prometheus') {
-        //     steps {
-        //         dir('DevOps_Project') {
-
-        //         script {
-        //             sh 'docker-compose -f docker-compose-prometheus.yml -f docker-compose-grafana.yml up -d'
-        //         }
-        //         }
-        //     }
-        // }
-
-         /* stage('Build Frontend') {
-            steps {
-                dir('DevOps_Project_Front') {
-                    script {
-//                        export PATH="/path/to/node_modules/.bin:$PATH"
-                        sh 'npm install'
-                        sh 'ng build '
-                    }
-                }
-            }
-        }
-*/
- 
-
         
 
         
