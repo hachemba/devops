@@ -69,16 +69,16 @@ pipeline {
                 }
             }
         }
-           stage('Compose grafana and prometheus') {
-            steps {
-                dir('DevOps_Project') {
+        //    stage('Compose grafana and prometheus') {
+        //     steps {
+        //         dir('DevOps_Project') {
 
-                script {
-                    sh 'docker-compose -f docker-compose-prometheus.yml -f docker-compose-grafana.yml up -d'
-                }
-                }
-            }
-        }
+        //         script {
+        //             sh 'docker-compose -f docker-compose-prometheus.yml -f docker-compose-grafana.yml up -d'
+        //         }
+        //         }
+        //     }
+        // }
 
          /* stage('Build Frontend') {
             steps {
