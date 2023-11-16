@@ -82,7 +82,6 @@ pipeline {
             steps {
                 script {
                     def dockerImage = 'hachembenarab/devops'
-                  //  def imageExists = sh(script: "docker inspect --type=image $dockerImage", returnStatus: true) == 0
 
                         dir('DevOps_Project') {
                             sh "docker build -t $dockerImage ."
