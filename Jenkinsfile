@@ -4,7 +4,6 @@ pipeline {
     
 
     environment {
-     //   PATH = "$PATH:/usr/local/bin"
        DOCKERHUB_CREDENTIALS = credentials('hbaDockerHub')
     }
     
