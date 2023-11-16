@@ -1,9 +1,7 @@
 pipeline {
     agent any
 
-    tools{
-        nodejs 'nodeJsPackage'
-    }
+    
 
     environment {
      //   PATH = "$PATH:/usr/local/bin"
